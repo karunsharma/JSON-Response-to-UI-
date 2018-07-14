@@ -32,6 +32,7 @@ xhr.onload = function() {
   {
     console.log('Error in getting data from server');
   }
+  $('.mainUnorderedList li:nth-child(1n)').css({"clear":"both"});
 };
 xhr.open('GET','http://localhost:3000/names',true);
 xhr.send(null);
