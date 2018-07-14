@@ -5,6 +5,7 @@
   max-width: 200px;
   display: inline;
   float: left;
+  background: #DFDEDC;
 }
 
 body {
@@ -28,14 +29,10 @@ body {
 
 #boxCreation {
   width: 1400px;
-  height: 400px;
+  height: 600px;
   border-style: solid;
   padding: 12px;
   background-color: #F5F5F5;
-}
-
-#responseStyle {
-  background-color: gray;
 }
 
 /*.mainUnorderedList > li{

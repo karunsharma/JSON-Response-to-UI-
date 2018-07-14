@@ -1,3 +1,4 @@
+var responseCounter = 1;
 var createDiv = function(data,sizeOfData) {
   var getUnorderedList = document.getElementsByTagName('ul')[0];
   var currentList = document.createElement("li");
@@ -10,6 +11,7 @@ var createDiv = function(data,sizeOfData) {
       currentList.appendChild(element);
   }
   getUnorderedList.appendChild(currentList);
+  responseCounter++;
 }
 var xhr = new XMLHttpRequest();
 xhr.onload = function() {
@@ -17,6 +19,9 @@ xhr.onload = function() {
   {
     var convertStringtoObj = JSON.parse(xhr.response);
     var getList = document.getElementsByTagName('ul')[0];
+    var title = document.createElement("h2");
+    title.appendChild(document.createTextNode("Response" + " "  + responseCounter.toString()));
+    getList.append(title);
     var getCurrentList;
     var status = true;
     var sizeArr = [];
