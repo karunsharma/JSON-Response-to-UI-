@@ -1,6 +1,5 @@
 var responseCounter = 1;
 function createDiv(data,sizeOfData,currentList) {
-  //var getUnorderedList = document.getElementsByTagName('ul')[0];
   var getUnorderedList = currentList;
   var currentList = document.createElement("li");
   var keys = Object.keys(data);
@@ -22,7 +21,6 @@ function iterateThroughElements(currentObj,currentList) {
   for(var index = 0; index < currentObj.length; index++) {
     sizeArr.push(Object.keys(currentObj[index]).length);
   }
-  console.log(sizeArr.length);
   for(var index = 0; index < sizeArr.length; index++){
     createDiv(currentObj[index], sizeArr[index],currentList);
   }
@@ -33,8 +31,6 @@ xhr.onload = function() {
   if (xhr.status === 200)
   {
     var convertStringtoObj = JSON.parse(xhr.response);
-    console.log(convertStringtoObj);
-    console.log(Object.keys(convertStringtoObj).length);
     var getList = document.getElementsByTagName('ul')[0];
     var getMainDiv = document.getElementById('boxCreation');
 
@@ -42,15 +38,10 @@ xhr.onload = function() {
         for(var index = 0; index < Object.keys(convertStringtoObj).length; index++) {
             var tempUL = document.createElement('ul');
             tempUL.className = "mainUnorderedList";
-            //getList.appendChild(tempUL);
             getMainDiv.appendChild(tempUL);
         }
     }
-    var getCurrentList;
-    var status = true;
-    var sizeArr = [];
     var getAllUnorderedLists = document.getElementsByClassName("mainUnorderedList");
-
     if (Object.keys(convertStringtoObj).length > 1){
       var counter = 0;
       for (var key in convertStringtoObj) {
