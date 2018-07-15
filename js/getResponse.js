@@ -1,6 +1,7 @@
 var responseCounter = 1;
-var createDiv = function(data,sizeOfData) {
-  var getUnorderedList = document.getElementsByTagName('ul')[0];
+function createDiv(data,sizeOfData,currentList) {
+  //var getUnorderedList = document.getElementsByTagName('ul')[0];
+  var getUnorderedList = currentList;
   var currentList = document.createElement("li");
   var keys = Object.keys(data);
   for (var index = 0; index < sizeOfData; index++){
@@ -11,6 +12,20 @@ var createDiv = function(data,sizeOfData) {
       currentList.appendChild(element);
   }
   getUnorderedList.appendChild(currentList);
+}
+
+function iterateThroughElements(currentObj,currentList) {
+  var sizeArr = [];
+  var title = document.createElement("h2");
+  title.appendChild(document.createTextNode("Response" + " "  + responseCounter.toString()));
+  currentList.appendChild(title);
+  for(var index = 0; index < currentObj.length; index++) {
+    sizeArr.push(Object.keys(currentObj[index]).length);
+  }
+  console.log(sizeArr.length);
+  for(var index = 0; index < sizeArr.length; index++){
+    createDiv(currentObj[index], sizeArr[index],currentList);
+  }
   responseCounter++;
 }
 var xhr = new XMLHttpRequest();
@@ -18,20 +33,36 @@ xhr.onload = function() {
   if (xhr.status === 200)
   {
     var convertStringtoObj = JSON.parse(xhr.response);
+    console.log(convertStringtoObj);
+    console.log(Object.keys(convertStringtoObj).length);
     var getList = document.getElementsByTagName('ul')[0];
-    var title = document.createElement("h2");
-    title.appendChild(document.createTextNode("Response" + " "  + responseCounter.toString()));
-    getList.append(title);
+    var getMainDiv = document.getElementById('boxCreation');
+
+    if (Object.keys(convertStringtoObj).length > 1) {
+        for(var index = 0; index < Object.keys(convertStringtoObj).length; index++) {
+            var tempUL = document.createElement('ul');
+            tempUL.className = "mainUnorderedList";
+            //getList.appendChild(tempUL);
+            getMainDiv.appendChild(tempUL);
+        }
+    }
     var getCurrentList;
     var status = true;
     var sizeArr = [];
-    for(var index = 0; index < convertStringtoObj.length; index++) {
-      sizeArr.push(Object.keys(convertStringtoObj[index]).length);
+    var getAllUnorderedLists = document.getElementsByClassName("mainUnorderedList");
+
+    if (Object.keys(convertStringtoObj).length > 1){
+      var counter = 0;
+      for (var key in convertStringtoObj) {
+          iterateThroughElements(convertStringtoObj[key],getAllUnorderedLists[counter++]);
+      }
+
     }
-    console.log(sizeArr.length);
-    for(var index = 0; index < sizeArr.length; index++){
-      createDiv(convertStringtoObj[index], sizeArr[index]);
+    else
+    {
+        iterateThroughElements(convertStringtoObj,getAllUnorderedLists[0]);
     }
+
   }
   else
   {
@@ -39,5 +70,5 @@ xhr.onload = function() {
   }
   $('.mainUnorderedList li:nth-child(1n)').css({"clear":"both"});
 };
-xhr.open('GET','http://localhost:3000/names',true);
+xhr.open('GET','http://localhost:3000/db',true);
 xhr.send(null);

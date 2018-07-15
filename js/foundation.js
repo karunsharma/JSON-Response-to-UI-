@@ -9,12 +9,26 @@ var generateDataSet = function()
       var tempObj = {
         "id": index + 1,
         "name": nameArr[index]
-      }
+      };
 
-      objArr.push(tempObj)
+      objArr.push(tempObj);
   }
 
-  return {'names': objArr}
+  var fakeStudentNames = ['Bob', 'Jim', 'Phil'];
+  var grades = ['A','B','C'];
+  var objArr2 = [];
+
+  for(var index = 0; index < 3; index++){
+      objArr2.push(
+      {
+        "student": fakeStudentNames[index],
+        "grade": grades[index]
+      }
+      );
+  }
+
+  return {'names': objArr,'students': objArr2};
 }
 
-module.exports = generateDataSet
+
+module.exports = generateDataSet;
