@@ -38,6 +38,22 @@ body {
 .mainUnorderedList {
   display: inline;
   float: left;
+  border-style: groove;
+  border-color: black;
+  padding: 12px;
+  margin: 20px;
+  background-color: #6C7A89;
+
+}
+
+#boxCreation .mainUnorderedList h2{
+  font-family: sans-serif;
+  text-align: center;
+  opacity: 0.8;
+}
+
+#boxCreation .mainUnorderedList li {
+  display: block;
 }
 
 /*.mainUnorderedList > li{

@@ -1,7 +1,13 @@
+/*File: getResponse.js
+  Description: Takes backend JSON responses and converts them to boxes that look presentable
+  Author: Karun Sharma
+  Date 7-16-18
+  Version: 1.0
+*/
 var responseCounter = 1;
 
-function createDiv(data,sizeOfData,currentList) {
-  var getUnorderedList = currentList;
+function createDiv(data,sizeOfData,currentUnorderedList) {
+  var getUnorderedList = currentUnorderedList;
   var currentList = document.createElement("li");
   var keys = Object.keys(data);
   for (var index = 0; index < sizeOfData; index++){
@@ -18,6 +24,7 @@ function iterateThroughElements(currentObj,currentList) {
   var sizeArr = [];
   var title = document.createElement("h2");
   title.appendChild(document.createTextNode("Response" + " "  + responseCounter.toString()));
+  title.idName = "responseTitle";
   currentList.appendChild(title);
   console.log(Array.isArray(currentObj));
   if (!Array.isArray(currentObj)) {
