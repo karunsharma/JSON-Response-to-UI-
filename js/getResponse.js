@@ -1,4 +1,5 @@
 var responseCounter = 1;
+
 function createDiv(data,sizeOfData,currentList) {
   var getUnorderedList = currentList;
   var currentList = document.createElement("li");
@@ -18,12 +19,20 @@ function iterateThroughElements(currentObj,currentList) {
   var title = document.createElement("h2");
   title.appendChild(document.createTextNode("Response" + " "  + responseCounter.toString()));
   currentList.appendChild(title);
-  for(var index = 0; index < currentObj.length; index++) {
-    sizeArr.push(Object.keys(currentObj[index]).length);
+  console.log(Array.isArray(currentObj));
+  if (!Array.isArray(currentObj)) {
+     createDiv(currentObj,1,currentList);
   }
-  for(var index = 0; index < sizeArr.length; index++){
-    createDiv(currentObj[index], sizeArr[index],currentList);
+  else
+  {
+    for(var index = 0; index < currentObj.length; index++) {
+      sizeArr.push(Object.keys(currentObj[index]).length);
+    }
+    for(var index = 0; index < sizeArr.length; index++){
+      createDiv(currentObj[index], sizeArr[index],currentList);
+    }
   }
+
   responseCounter++;
 }
 var xhr = new XMLHttpRequest();
@@ -31,6 +40,7 @@ xhr.onload = function() {
   if (xhr.status === 200)
   {
     var convertStringtoObj = JSON.parse(xhr.response);
+    console.log(convertStringtoObj);
     var getList = document.getElementsByTagName('ul')[0];
     var getMainDiv = document.getElementById('boxCreation');
 
@@ -42,6 +52,7 @@ xhr.onload = function() {
         }
     }
     var getAllUnorderedLists = document.getElementsByClassName("mainUnorderedList");
+
     if (Object.keys(convertStringtoObj).length > 1){
       var counter = 0;
       for (var key in convertStringtoObj) {

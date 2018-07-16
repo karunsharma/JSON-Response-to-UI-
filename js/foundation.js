@@ -27,7 +27,8 @@ var generateDataSet = function()
       );
   }
 
-  return {'names': objArr,'students': objArr2};
+
+  return {'names': objArr,'students': objArr2, 'test': {'name': 'john'}}; 
 }
 
 
