@@ -52,18 +52,18 @@ xhr.onload = function() {
     var getMainDiv = document.getElementById('boxCreation');
 
     if (Object.keys(convertStringtoObj).length > 1) {
-        for(var index = 0; index < Object.keys(convertStringtoObj).length; index++) {
+        for(var index = 0; index < Object.keys(convertStringtoObj).length - 1; index++) {
             var tempUL = document.createElement('ul');
             tempUL.className = "mainUnorderedList";
             getMainDiv.appendChild(tempUL);
         }
     }
-    var getAllUnorderedLists = document.getElementsByClassName("mainUnorderedList");
+    var getAllUnorderedLists = Array.prototype.slice.call(document.getElementsByClassName("mainUnorderedList"));
+    console.log(getAllUnorderedLists);
 
     if (Object.keys(convertStringtoObj).length > 1){
-      var counter = 0;
       for (var key in convertStringtoObj) {
-          iterateThroughElements(convertStringtoObj[key],getAllUnorderedLists[counter++]);
+          iterateThroughElements(convertStringtoObj[key],getAllUnorderedLists.shift());
       }
 
     }
