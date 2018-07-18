@@ -3,19 +3,28 @@
 <head>
   <meta http-equiv="author" content = "Karun Sharma" />
   <link rel = "stylesheet" href = "css/style.css" type="text/css" />
+  <link rel = "stylesheet" href = "css/PostRequestStyle.css" type = "text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <title> Response Prototype </title>
 </head>
 <body>
   <script src = "js/getResponse.js"> </script>
   <div id = "headerStyle">
-      <h1 id = "textInsideHeaderStyle"> Backend JSON Response User Interface </h1>
+  <h1 id = "textInsideHeaderStyle"> Backend JSON Response User Interface </h1>
   </div>
   <hr />
   <p id = "textInsideHeaderStyle"> This webpage contains JSON responses in a more user friendly interface </p>
+  <div class = "divTest">
   <div id = "boxCreation">
   <ul class = "mainUnorderedList">
   </ul>
+</div>
+<div class = "mainPostDiv">
+<h1 id = "PostRequestTitleStyle"> POST Request </h1>
+<form action = "http://localhost:3000" method = "get">
+  <textarea cols = "79" rows = "41" > Use this text box to send a POST request to a backend server</textarea>
+</form>
+</div>
 </div>
 </body>
 </html>

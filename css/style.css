@@ -22,23 +22,25 @@ body {
 
 #textInsideHeaderStyle {
   font-family: serif;
-  /*color: #B1B1B1;*/
   color: #F5F5F5;
   text-align: center;
 }
 
 #boxCreation {
-  width: 1400px;
+  width: 1000px;
   height: 600px;
   border-style: solid;
   padding: 12px;
   background-color: #F5F5F5;
+  float: left;
 }
 
 .mainUnorderedList {
-  display: inline;
+  /*display: inline;*/
   float: left;
-  border-style: groove;
+  /*border-style: groove;*/
+  border: 5px solid black;
+  border-radius: 20px;
   border-color: black;
   padding: 12px;
   margin: 20px;
@@ -55,8 +57,3 @@ body {
 #boxCreation .mainUnorderedList li {
   display: block;
 }
-
-/*.mainUnorderedList > li{
-  display: inline;
-  float:left;
-}*/

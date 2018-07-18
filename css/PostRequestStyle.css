@@ -1,0 +1,17 @@
+.mainPostDiv {
+  background-color: #ABB7B7;
+  float: right;
+  height: 660px;
+  width: 500px;
+
+}
+
+#PostRequestTitleStyle {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.divTest {
+  width: 1700px;
+  height: 1500px;
+}
