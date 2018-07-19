@@ -3,7 +3,7 @@
   float: right;
   height: 660px;
   width: 500px;
-
+  border-style: solid;
 }
 
 #PostRequestTitleStyle {
@@ -14,4 +14,24 @@
 .divTest {
   width: 1700px;
   height: 1500px;
+}
+
+#submitButtonStyle {
+  color: white;
+  background-color: #292E37;
+  height: 30px;
+  font-family: sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.mainPostDiv #inputButtonAlign {
+  text-align: center;
+}
+
+.mainPostDiv #textboxAlign {
+   text-align: center;
+}
+textarea {
+  resize: none;
 }
