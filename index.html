@@ -8,13 +8,18 @@
   <title> Response Prototype </title>
 </head>
 <body>
-  <script src = "js/getResponse.js"> </script>
+  <!--<script src = "js/getResponse.js"> </script>
+  <script src = "js/postRequests.js"> </script> !-->
   <div id = "headerStyle">
   <h1 id = "textInsideHeaderStyle"> Backend JSON Response User Interface </h1>
   </div>
   <hr />
   <p id = "textInsideHeaderStyle"> This webpage contains JSON responses in a more user friendly interface </p>
   <div class = "divTest">
+    <form>
+      Enter ID: <input id = "idBox" type = "text">
+      <input id = "getRequestSubmit" value = "Submit GET request" type = "submit" />
+    </form>
   <div id = "boxCreation">
   <ul class = "mainUnorderedList">
   </ul>
@@ -23,7 +28,7 @@
 <h1 id = "PostRequestTitleStyle"> POST Request </h1>
 <form action = "http://localhost:3000" method = "post">
   <div id = textboxAlign>
-  <textarea cols = "79" rows = "41" > Use this text box to send a POST request to a backend server</textarea>
+  <textarea id = "textAreaId" cols = "79" rows = "41" > Use this text box to send a POST request to a backend server</textarea>
 </div>
 <div id = "inputButtonAlign">
   <input id = "submitButtonStyle" type = "submit" value = "Submit"/>
@@ -31,5 +36,6 @@
 </form>
 </div>
 </div>
+<script src = "js/GetRequests.js"> </script>
 </body>
 </html>
