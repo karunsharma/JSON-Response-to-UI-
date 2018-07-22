@@ -14,9 +14,25 @@ function submitRequest() {
   xhr.onload = function() {
     if (xhr.status === 200) {
       console.log(xhr.response);
+      drawLists(xhr.response,getId.value);
     }
   }
   return false;
+}
+
+function drawLists(responseObj,id) {
+   var createList = document.createElement('li');
+   var createDiv = document.createElement('div');
+   var jsonResponse = document.createTextNode(responseObj);
+   var idtoTextNode = document.createTextNode('id: ' + id);
+   var getMainList = document.getElementsByClassName('mainUnorderedList')[0];
+   var title = document.createElement('h2').appendChild(idtoTextNode);
+   createList.appendChild(jsonResponse);
+   createDiv.appendChild(createList);
+   createDiv.className = 'boxLayout';
+   getMainList.appendChild(createDiv);
+
+
 }
 
 

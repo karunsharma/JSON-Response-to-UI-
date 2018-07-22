@@ -1,8 +1,8 @@
 .boxLayout {
   border: 1px solid;
   padding: 10px;
-  min-width: 100px;
-  max-width: 200px;
+  width: 400px;
+  height: 400px;
   display: inline;
   float: left;
   background: #DFDEDC;
@@ -54,6 +54,19 @@ body {
   opacity: 0.8;
 }
 
+
 #boxCreation .mainUnorderedList li {
   display: block;
+}
+
+
+#h2Test {
+  font-family: sans-serif;
+  text-align: center;
+  opacity: 0.8;
+}
+
+#formTest {
+  color: #F5F5F5;
+  text-align: center;
 }
