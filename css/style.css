@@ -29,9 +29,9 @@ body {
 #boxCreation {
   width: 1000px;
   height: 600px;
-  border-style: solid;
+  /*border-style: solid;*/
   padding: 12px;
-  background-color: #F5F5F5;
+  /*background-color: #F5F5F5;*/
   float: left;
 }
 

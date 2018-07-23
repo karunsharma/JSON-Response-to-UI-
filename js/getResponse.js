@@ -49,7 +49,7 @@ xhr.onload = function() {
     var convertStringtoObj = JSON.parse(xhr.response);
     console.log(convertStringtoObj);
     var getList = document.getElementsByTagName('ul')[0];
-    var getMainDiv = document.getElementById('boxCreation');
+    var getMainDiv = document.getElementById('boxCreation'); 
 
     if (Object.keys(convertStringtoObj).length > 1) {
         for(var index = 0; index < Object.keys(convertStringtoObj).length - 1; index++) {

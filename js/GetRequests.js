@@ -31,7 +31,7 @@ function drawLists(responseObj,id) {
    createDiv.appendChild(createList);
    createDiv.className = 'boxLayout';
    getMainList.appendChild(createDiv);
-
+   
 
 }
 
