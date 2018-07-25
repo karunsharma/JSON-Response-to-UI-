@@ -1,19 +1,29 @@
 /*File: GetRequests.js
   Description: New version of handling get requests
   Author: Karun Sharma
-  Date 7-20-18
-  Version: 1.0
+  Date 7-24-18
+  Version: 1.1
 */
 function submitRequest() {
+
   var xhr = new XMLHttpRequest();
   var getId = document.getElementById('idBox');
-  console.log(getId.value);
-  var urlString = 'http://localhost:8080/users/' + getId.value;
+  var getDatabasePath = document.getElementById("dataBaseIdBox");
+  if (getDatabasePath.value.length == 0 || getDatabasePath.value == null) {
+    alert('Error, database path is either empty or null');
+  }
+  var urlString = 'http://localhost:8080/' + getDatabasePath.value + '/' + getId.value;
   xhr.open('GET', urlString,true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  if (document.getElementById("authorizationBox").value.length != 0 && document.getElementById("authorizationBox").value != null) {
+    xhr.setRequestHeader('Authorization',document.getElementById("authorizationBox").value);
+  }
+  else {
+    alert('Authorization header token is not correct');
+  }
   xhr.send(null);
   xhr.onload = function() {
     if (xhr.status === 200) {
-      console.log(xhr.response);
       drawLists(xhr.response,getId.value);
     }
   }
@@ -21,19 +31,24 @@ function submitRequest() {
 }
 
 function drawLists(responseObj,id) {
+   var preTag = document.createElement('pre');
    var createList = document.createElement('li');
    var createDiv = document.createElement('div');
-   var jsonResponse = document.createTextNode(responseObj);
-   var idtoTextNode = document.createTextNode('id: ' + id);
+   var toObj = JSON.parse(responseObj);
+   var jsonResponse = document.createTextNode(JSON.stringify(toObj,undefined,2));
+   var idtoTextNode = document.createTextNode('Get request ID: ' + id);
    var getMainList = document.getElementsByClassName('mainUnorderedList')[0];
-   var title = document.createElement('h2').appendChild(idtoTextNode);
+   getMainList.style.visibility = 'visible';
+   var title = document.createElement('H3');
+   var textTitle = document.createTextNode('Get request ID: ' + id);
+   title.appendChild(textTitle);
+   createDiv.appendChild(title);
    createList.appendChild(jsonResponse);
    createDiv.appendChild(createList);
    createDiv.className = 'boxLayout';
-   getMainList.appendChild(createDiv);
+   preTag.appendChild(createDiv);
+   getMainList.appendChild(preTag);
 }
-
-
 
 var submitButtonEvent = document.getElementById('getRequestSubmit');
 submitButtonEvent.onclick = submitRequest;

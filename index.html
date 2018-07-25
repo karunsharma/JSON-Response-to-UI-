@@ -2,9 +2,12 @@
 <html>
 <head>
   <meta http-equiv="author" content = "Karun Sharma" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   <link rel = "stylesheet" href = "css/style.css" type="text/css" />
-  <link rel = "stylesheet" href = "css/PostRequestStyle.css" type = "text/css" />
+  <link rel = "stylesheet" href = "css/PostRequestStyle.css" type = "text/css" /> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+  <script src="node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
   <title> Response Prototype </title>
 </head>
 <body>
@@ -15,28 +18,33 @@
   <p id = "textInsideHeaderStyle"> This webpage contains JSON responses in a more user friendly interface </p>
   <form id = "formTest">
     Enter ID: <input id = "idBox" type = "text">
+  </form>
+  <form id = "dataBaseFormTest">
+    Enter Database Path: <input id = "dataBaseIdBox" type = "text">
+  </form> 
+  <form id = "tokenAccessForm">
+    Enter Authorization Token: <input id = "authorizationBox" type = "text">
+  </form>
+  <form id = "submitRequest">
     <input id = "getRequestSubmit" value = "Submit GET request" type = "submit" />
   </form>
-
   <div class = "divTest">
-  <div id = "boxCreation">
+  <div id = "boxCreation"> 
   <ul class = "mainUnorderedList">
   </ul>
 </div>
 
 <div class = "mainPostDiv">
 <h1 id = "PostRequestTitleStyle"> POST Request </h1>
+<div id = "testJSON" style="width: 500px; height: 550px;"></div>
 <form>
-  <div id = textboxAlign>
-  <textarea id = "textAreaId" cols = "79" rows = "41" > Use this text box to send a POST request to a backend server</textarea>
-</div>
 <div id = "inputButtonAlign">
   <input id = "submitButtonStyle" type = "submit" value = "Submit"/>
 </div>
 </form>
-</div>
+</div> 
 </div>
 <script src = "js/GetRequests.js"> </script>
-<script src = "js/postRequests.js"> </script> 
+<script src = "js/postRequests.js"> </script>
 </body>
 </html>
