@@ -1,8 +1,8 @@
 /*File: postRequests.js
   Description: Allows POST functionality
   Author: Karun Sharma
-  Date 7-24-18
-  Version: 1.1
+  Date 7-26-18
+  Version: 1.2
 */
 var container = document.getElementById("testJSON");
 var editor = new JSONEditor(container,{"mode":"code"});
@@ -38,3 +38,14 @@ function onSubmitPostRequests(){
 
 var postButtonRequest = document.getElementById('submitButtonStyle');
 postButtonRequest.onclick = onSubmitPostRequests;
+
+$(function(){
+  $('#submitButtonStyle').on('mouseover', function(){
+    $(this).fadeTo('slow',0.5,function(){
+      $('#submitButtonStyle').on('mouseout', function(){
+        $(this).fadeTo('slow',1.0,function(){
+        });
+      });
+    });
+  });
+});

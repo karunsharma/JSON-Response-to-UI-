@@ -1,8 +1,8 @@
 /*File: GetRequests.js
   Description: New version of handling get requests
   Author: Karun Sharma
-  Date 7-24-18
-  Version: 1.1
+  Date 7-26-18
+  Version: 1.2
 */
 function submitRequest() {
 
@@ -34,6 +34,7 @@ function drawLists(responseObj,id) {
    var preTag = document.createElement('pre');
    var createList = document.createElement('li');
    var createDiv = document.createElement('div');
+   createDiv.className = 'testingFadeIn';
    var toObj = JSON.parse(responseObj);
    var jsonResponse = document.createTextNode(JSON.stringify(toObj,undefined,2));
    var idtoTextNode = document.createTextNode('Get request ID: ' + id);
@@ -47,8 +48,36 @@ function drawLists(responseObj,id) {
    createDiv.appendChild(createList);
    createDiv.className = 'boxLayout';
    preTag.appendChild(createDiv);
-   getMainList.appendChild(preTag);
+   preTag.className = 'testf';
+   $(function(){
+      $('.mainUnorderedList').hide().append(preTag);
+      $('.mainUnorderedList:last').fadeIn('slow');
+
+   });
+}
+
+function applyEffectForGetButtons(str){
+  $(function(){
+    $(str).on('mouseover', function(){
+      $(this).fadeTo('slow',0.5,function(){
+        $(str).on('mouseout', function(){
+          $(this).fadeTo('slow',1.0,function(){
+          });
+        });
+      });
+    });
+  });
 }
 
 var submitButtonEvent = document.getElementById('getRequestSubmit');
 submitButtonEvent.onclick = submitRequest;
+applyEffectForGetButtons('#getRequestSubmit');
+applyEffectForGetButtons('#clearRequests');
+
+$(function(){
+  $('#clearRequests').on('click',function(){
+    $('.mainUnorderedList').each(function(){
+      $(this).remove();
+    });
+  });
+});
