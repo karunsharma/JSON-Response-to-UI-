@@ -1,8 +1,8 @@
 /*File: postRequests.js
   Description: Allows POST functionality
   Author: Karun Sharma
-  Date 7-26-18
-  Version: 1.2
+  Date 7-30-18
+  Version: 1.3
 */
 var container = document.getElementById("testJSON");
 var editor = new JSONEditor(container,{"mode":"code"});
@@ -10,19 +10,10 @@ var editor = new JSONEditor(container,{"mode":"code"});
 function onSubmitPostRequests(){
   var xhr = new XMLHttpRequest();
   var getJSONData = editor.get();
-  var getDatabasePath = document.getElementById("dataBaseIdBox");
-  if (getDatabasePath.value.length == 0 || getDatabasePath.value == null) {
-    alert('Error, database path is either empty or null');
-  }
-  var urlString = 'http://localhost:8080/' + getDatabasePath.value;
+  var urlString = 'http://localhost:8080/users';
   xhr.open('POST',urlString, true);
   xhr.setRequestHeader("Content-type", "application/json");
-  if (document.getElementById("authorizationBox").value.length != 0 && document.getElementById("authorizationBox").value != null) {
-    xhr.setRequestHeader('Authorization',document.getElementById("authorizationBox").value);
-  }
-  else {
-    alert('Authorization header token is not correct');
-  }
+  xhr.setRequestHeader('Authorization','foo');
   xhr.send(JSON.stringify(getJSONData));
   xhr.onload = function () {
     if (xhr.status === 200) {
