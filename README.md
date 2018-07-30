@@ -4,15 +4,24 @@ This project takes a response from a backend web server and converts it to a fri
 # Getting Started
 
 ## Prerequisites
--Javascript
--NPM
--json-editor 
+```
+Javascript
+NPM
+json-editor 
+```
 
 ## How to install
 npm install
 
 ## How to run the project
-A server is required, enter all the proper information into the html page and everything should work
+```
+A server is required
+At the moment the HTML page takes an ID as input (Will be modified later)
+If backend filter route works, then entering just the name of user from database should be entered in the filter box
+If you want to modify the endpoint for GET requests, please modify the variable "mainURL" in GetRequest.js
+If you want to modify the endpoint for POST requests, please modify the variable "urlString" in postRequests.js
+```
+
 
 # Author
 ## Karun Sharma

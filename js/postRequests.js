@@ -10,7 +10,7 @@ var editor = new JSONEditor(container,{"mode":"code"});
 function onSubmitPostRequests(){
   var xhr = new XMLHttpRequest();
   var getJSONData = editor.get();
-  var urlString = 'http://localhost:8080/users';
+  var urlString = 'http://localhost:8080/users'; //URL WHICH POINTS TO USERS ENDPOINT
   xhr.open('POST',urlString, true);
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.setRequestHeader('Authorization','foo');
