@@ -22,7 +22,7 @@ If you want to modify the endpoint for GET requests, please modify the variable 
 If you want to modify the endpoint for POST requests, please modify the variable "urlString" in postRequests.js
 ```
 
-##You will also need to build json-editor
+## You will also need to build json-editor
 ```
 Once directory is cloned and npm install has been ran
 
