@@ -1,29 +1,25 @@
 /*File: GetRequests.js
   Description: New version of handling get requests
   Author: Karun Sharma
-  Date 7-26-18
-  Version: 1.2
+  Date 7-29-18
+  Version: 1.3
 */
-function submitRequest() {
 
+var mainURL  = 'http://localhost:8080/users'; //URL WHICH POINTS TO THE USERS ENDPOINT (Changeable)
+function submitRequest(str) {
   var xhr = new XMLHttpRequest();
+  var urlString = mainURL + str;
   var getId = document.getElementById('idBox');
-  var getDatabasePath = document.getElementById("dataBaseIdBox");
-  if (getDatabasePath.value.length == 0 || getDatabasePath.value == null) {
-    alert('Error, database path is either empty or null');
-  }
-  var urlString = 'http://localhost:8080/' + getDatabasePath.value + '/' + getId.value;
   xhr.open('GET', urlString,true);
   xhr.setRequestHeader("Content-type", "application/json");
-  if (document.getElementById("authorizationBox").value.length != 0 && document.getElementById("authorizationBox").value != null) {
-    xhr.setRequestHeader('Authorization',document.getElementById("authorizationBox").value);
-  }
-  else {
-    alert('Authorization header token is not correct');
-  }
+  xhr.setRequestHeader('Authorization','foo');
   xhr.send(null);
   xhr.onload = function() {
     if (xhr.status === 200) {
+      $('.mainUnorderedList').each(function(){
+        $('.mainUnorderedList .testf').remove();
+      });
+      console.log(xhr.response);
       drawLists(xhr.response,getId.value);
     }
   }
@@ -52,7 +48,6 @@ function drawLists(responseObj,id) {
    $(function(){
       $('.mainUnorderedList').hide().append(preTag);
       $('.mainUnorderedList:last').fadeIn('slow');
-
    });
 }
 
@@ -69,15 +64,19 @@ function applyEffectForGetButtons(str){
   });
 }
 
-var submitButtonEvent = document.getElementById('getRequestSubmit');
-submitButtonEvent.onclick = submitRequest;
 applyEffectForGetButtons('#getRequestSubmit');
-applyEffectForGetButtons('#clearRequests');
 
 $(function(){
-  $('#clearRequests').on('click',function(){
-    $('.mainUnorderedList').each(function(){
-      $(this).remove();
-    });
+  $('#getRequestSubmit').on('click',function(){
+    var getId = document.getElementById('idBox');
+    submitRequest('/'  + getId.value);
+    return false;
+  });
+});
+
+$(function(){
+  $('#filterGetRequestSubmit').on('click',function(){
+    submitRequest('?filter::name:' + $('#filterInput').val());
+    return false;
   });
 });

@@ -19,15 +19,12 @@
   <form id = "formTest">
     Enter ID: <input id = "idBox" type = "text">
   </form>
-  <form id = "dataBaseFormTest">
-    Enter Database Path: <input id = "dataBaseIdBox" type = "text">
-  </form> 
-  <form id = "tokenAccessForm">
-    Enter Authorization Token: <input id = "authorizationBox" type = "text">
+  <form id = "filterForm">
+      Enter values to filter by <input id = "filterInput" type = "text">
   </form>
   <form id = "submitRequest">
     <input id = "getRequestSubmit" value = "Submit GET request" type = "submit" />
-    <input id = "clearRequests" value = "Clear current GET requests" type = "submit" />
+    <input id = "filterGetRequestSubmit" value = "Submit Filter GET request" type = "submit" />
   </form>
 </div>
   <div class = "divTest">
@@ -35,7 +32,6 @@
   <ul class = "mainUnorderedList">
   </ul>
 </div>
-
 <div class = "mainPostDiv">
 <h1 id = "PostRequestTitleStyle"> POST Request </h1>
 <div id = "testJSON" style="width: 500px; height: 550px;"></div>
@@ -48,5 +44,6 @@
 </div>
 <script src = "js/GetRequests.js"> </script>
 <script src = "js/postRequests.js"> </script>
+<script src = "js/filterRequests.js"></script>
 </body>
 </html>
