@@ -13,6 +13,7 @@ function submitRequest(str) {
   xhr.open('GET', urlString,true);
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.setRequestHeader('Authorization','foo');
+  xhr.setRequestHeader('Access-Control-Allow-Origin','*');
   xhr.send(null);
   xhr.onload = function() {
     if (xhr.status === 200) {
@@ -20,7 +21,7 @@ function submitRequest(str) {
         $('.mainUnorderedList .testf').remove();
       });
       console.log(xhr.response);
-      drawLists(xhr.response,getId.value);
+      drawLists(xhr.response,'Get request ID: ' + getId.value);
     }
   }
   return false;
@@ -33,11 +34,11 @@ function drawLists(responseObj,id) {
    createDiv.className = 'testingFadeIn';
    var toObj = JSON.parse(responseObj);
    var jsonResponse = document.createTextNode(JSON.stringify(toObj,undefined,2));
-   var idtoTextNode = document.createTextNode('Get request ID: ' + id);
+   var idtoTextNode = document.createTextNode(id);
    var getMainList = document.getElementsByClassName('mainUnorderedList')[0];
    getMainList.style.visibility = 'visible';
    var title = document.createElement('H3');
-   var textTitle = document.createTextNode('Get request ID: ' + id);
+   var textTitle = document.createTextNode(id);
    title.appendChild(textTitle);
    createDiv.appendChild(title);
    createList.appendChild(jsonResponse);
@@ -65,6 +66,7 @@ function applyEffectForGetButtons(str){
 }
 
 applyEffectForGetButtons('#getRequestSubmit');
+applyEffectForGetButtons('#filterGetRequestSubmit');
 
 $(function(){
   $('#getRequestSubmit').on('click',function(){

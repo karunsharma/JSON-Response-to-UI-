@@ -4,6 +4,13 @@
   Date 7-30-18
   Version: 1.3
 */
+
+/*
+TODO: Fix resolution so theres no scrolling
+      display POST requests as well
+*/
+
+
 var container = document.getElementById("testJSON");
 var editor = new JSONEditor(container,{"mode":"code"});
 
@@ -16,14 +23,15 @@ function onSubmitPostRequests(){
   xhr.setRequestHeader('Authorization','foo');
   xhr.send(JSON.stringify(getJSONData));
   xhr.onload = function () {
-    if (xhr.status === 200) {
-      console.log('All is good!');
+    console.log(xhr.status)
+    if (xhr.status === 201) {
+      var getId = JSON.parse(xhr.response);
+      drawLists(xhr.response,'Post Request ID: ' + JSON.stringify(getId.id));
     }
     else{
-      console.log(xhr.response);
+      alert('POST request failed');
     }
   }
-  alert('POST request sent');
   return false;
 }
 
